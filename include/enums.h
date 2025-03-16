@@ -1,4 +1,5 @@
-#ifndef enums
+#ifndef _ENUMS_H
+#define _ENUMS_H
 
 enum identifier
 {
@@ -87,4 +88,4 @@ typedef struct _token
     struct _token *next;
 
 }token;
-#endif // ! enums
+#endif
