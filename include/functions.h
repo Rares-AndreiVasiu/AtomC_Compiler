@@ -9,4 +9,4 @@ void token_error(token *token, char *fmt, ...);
 
 token *insert_token(int code, int line);
 
-#endif _FUNCTIONS_H
+#endif 

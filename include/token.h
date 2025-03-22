@@ -1,5 +1,5 @@
-#ifndef _FUNCTIONS_H
-#define _FUNCTIONS_H
+#ifndef _TOKEN_H
+#define _TOKEN_H
 
 typedef struct _token
 {
