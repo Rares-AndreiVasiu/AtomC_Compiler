@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 #include <ctype.h>
 #include <stdlib.h>
@@ -7,6 +8,7 @@
 #include "../include/token.h"
 #include "../include/globalVars.h"
 #include "../include/functions.h"
+#include "../include/enums.h"
 
 void error(char *fmt, ...)
 {
@@ -101,10 +103,12 @@ int getNextToken()
 
     char ch, *startChar;
 
+    int memSize = 0;
+
     token *tk;
 
     while(1)
-    {
+    { 
         ch = *currentChar;
 
         switch(state)
@@ -120,17 +124,78 @@ int getNextToken()
                     state = 1;
                 }
 
+                break;
+            }
+
+            case 1:
+            {
+                if(isalpha(ch) || ch == '_')
+                {
+                    currentChar++;
+                }
                 else
                 {
-                    if(ch == '=')
-                    {
-                        currentChar++;
-
-                        state = 3;
-                    }
+                    state = 2;
                 }
-
+                
                 break;
+            }
+
+            case 2:
+            {
+                memSize = currentChar - startChar;
+
+                switch(memSize)
+                {
+                    case 2:
+                    {
+                        if(!memcmp(startChar,"if", 2))
+                        {
+                            tk = insert_token(IF,0);
+                        }
+                        break;
+                    }
+
+                    case 3:
+                    {
+                        if(!memcmp(startChar,"for", 3))
+                        {
+                            tk = insert_token(FOR, 0);
+                        }
+                        else
+                        {
+                            if (!memcmp(startChar,"int",3)) 
+                            {
+                                tk = insert_token(INT, 0);
+                            }
+                        }
+                        break;
+                    }
+
+                    case 4:
+                    {
+                        if(!memcmp(startChar,"char", 4))
+                        {
+                            tk = insert_token(CHAR, 0);
+                        }
+                        else 
+                        {
+                            if(!memcmp(startChar,"else",4))
+                            {
+                                tk = insert_token(ELSE, 0);
+                            }
+                        }
+                    }
+
+                    case 5:
+                    {
+                        if(!(memcmp(startChar, "break", 5)))
+                        {
+                            tk = insert_token(BREAK,0);
+                        }
+                        break;
+                    }
+                } 
             }
         }
     }

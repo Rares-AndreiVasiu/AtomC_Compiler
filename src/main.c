@@ -3,7 +3,6 @@
 
 #include "../include/functions.h"
 #include "../include/token.h"
-#include "../include/globalVars.h"
 
 int main()
 {

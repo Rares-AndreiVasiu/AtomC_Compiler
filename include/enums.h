@@ -1,12 +1,12 @@
 #ifndef _ENUMS_H
 #define _ENUMS_H
 
-enum identifier
+extern enum identifier
 {
     ID
 };
 
-enum keyword
+extern enum keyword
 {
     BREAK,
     CHAR,
@@ -21,7 +21,7 @@ enum keyword
     WHILE
 };
 
-enum constans
+extern enum constans
 {
     CT_INT,
     CT_REAL,
@@ -29,7 +29,7 @@ enum constans
     CT_STRING
 };
 
-enum delimiter
+extern enum delimiter
 {
     COMMA,
     SEMICOLON,
@@ -41,7 +41,7 @@ enum delimiter
     RACC
 };
 
-enum opreators
+extern enum opreators
 {
     ADD,
     SUB,
@@ -60,7 +60,7 @@ enum opreators
     GREATEREQ 
 };
 
-enum sugar
+extern enum sugar
 {
     SPACE,
     LINECOMMENT,
